@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anticuchería El Carboncito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carbon: #17120f;
+    --carbon-2: #241b16;
+    --ember: #c1440e;
+    --ember-bright: #e8631f;
+    --gold: #d4a24c;
+    --cream: #f2e8dc;
+    --smoke: #6b5c4f;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--carbon);
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, .eyebrow{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+
+  /* --- HERO --- */
+  .hero{
+    position: relative;
+    padding: 72px 24px 56px;
+    text-align: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 120%, rgba(193,68,14,0.35), transparent 60%),
+      var(--carbon);
+  }
+
+  .ember-dot{
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--ember-bright);
+    margin: 0 auto 22px;
+    box-shadow: 0 0 12px 4px rgba(232,99,31,0.7);
+    animation: glow 2.4s ease-in-out infinite;
+  }
+
+  @keyframes glow{
+    0%, 100% { box-shadow: 0 0 10px 3px rgba(232,99,31,0.55); opacity: 0.85; }
+    50%      { box-shadow: 0 0 18px 6px rgba(232,99,31,0.9);  opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ember-dot{ animation: none; }
+  }
+
+  .eyebrow{
+    font-size: 0.8rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  h1{
+    font-size: clamp(2.6rem, 9vw, 3.6rem);
+    color: var(--cream);
+    line-height: 0.95;
+  }
+
+  .tagline{
+    margin-top: 14px;
+    color: var(--smoke);
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  .divider{
+    width: 64px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ember), transparent);
+    margin: 32px auto;
+  }
+
+  /* --- SECTIONS --- */
+  section{ padding: 40px 0; border-top: 1px solid rgba(242,232,220,0.08); }
+
+  h2{
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .info-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(242,232,220,0.12);
+    font-size: 0.95rem;
+  }
+  .info-row:last-child{ border-bottom: none; }
+  .info-row .label{ color: var(--smoke); }
+
+  .menu-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(242,232,220,0.08);
+  }
+  .menu-item:last-child{ border-bottom: none; }
+
+  .menu-item .name{ font-weight: 600; font-size: 1.05rem; }
+  .menu-item .desc{
+    display: block;
+    color: var(--smoke);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .menu-item .price{
+    color: var(--ember-bright);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+
+  /* --- CTA BUTTONS --- */
+  .cta-group{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn{
+    display: block;
+    text-align: center;
+    padding: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .btn:active{ transform: scale(0.98); }
+
+  .btn-primary{
+    background: var(--ember);
+    color: var(--cream);
+  }
+  .btn-secondary{
+    background: transparent;
+    border: 1px solid var(--smoke);
+    color: var(--cream);
+  }
+  .btn:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  footer{
+    text-align: center;
+    padding-top: 40px;
+    color: var(--smoke);
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="ember-dot" aria-hidden="true"></div>
+    <p class="eyebrow">Anticuchería &amp; Parrilla</p>
+    <h1>EL CARBONCITO</h1>
+    <p class="tagline">Fuego, tradición y sazón desde 1985</p>
+  </div>
+
+  <div class="wrap">
+
+    <section aria-label="Horario y ubicación">
+      <h2>Horario &amp; ubicación</h2>
+      <div class="info-row"><span class="label">Lunes a sábado</span><span>6:00 pm – 12:00 am</span></div>
+      <div class="info-row"><span class="label">Domingo</span><span>12:00 pm – 10:00 pm</span></div>
+      <div class="info-row"><span class="label">Dirección</span><span>Jr. Los Cedros 342, Lima</span></div>
+    </section>
+
+    <section aria-label="Menú destacado">
+      <h2>Nuestros clásicos</h2>
+
+      <div class="menu-item">
+        <div>
+          <span class="name">Anticuchos de corazón</span>
+          <span class="desc">6 brochetas, papa dorada y choclo</span>
+        </div>
+        <span class="price">S/ 22</span>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <span class="name">Choripán a la parrilla</span>
+          <span class="desc">Chorizo criollo, pan artesanal, criolla</span>
+        </div>
+        <span class="price">S/ 15</span>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <span class="name">Rachi carbonada</span>
+          <span class="desc">Mollejita crocante al carbón</span>
+        </div>
+        <span class="price">S/ 18</span>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <span class="name">Chicha morada 1L</span>
+          <span class="desc">Preparada en casa, receta de la abuela</span>
+        </div>
+        <span class="price">S/ 12</span>
+      </div>
+    </section>
+
+    <section aria-label="Contacto">
+      <h2>Reserva o pide delivery</h2>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="https://wa.me/51999999999" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn btn-secondary" href="https://maps.google.com/?q=Jr.+Los+Cedros+342+Lima" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn btn-secondary" href="https://instagram.com/elcarboncito.pe" target="_blank" rel="noopener">@elcarboncito.pe</a>
+      </div>
+    </section>
+
+    <footer>
+      Página generada para escaneo QR · El Carboncito
+    </footer>
+
+  </div>
+
+</body>
+</html>
