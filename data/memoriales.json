@@ -1,0 +1,15 @@
+[
+  {
+    "id": "memorial-001",
+    "nombre": "María Fernández",
+    "nacimiento": "1945-03-12",
+    "fallecimiento": "2024-08-20",
+    "biografia": "Fue una mujer maravillosa, dedicada a su familia...",
+    "foto": "/images/memoriales/memorial-001/principal.jpg",
+    "galeria": [
+      "/images/memoriales/memorial-001/foto-1.jpg",
+      "/images/memoriales/memorial-001/foto-2.jpg"
+    ],
+    "tema": "elegante"
+  }
+]
