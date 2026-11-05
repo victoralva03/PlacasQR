@@ -1,0 +1,492 @@
+
+/* =====================================
+   CONFIGURACIÓN GENERAL
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    min-height: 100vh;
+    transition: background 0.3s ease;
+}
+
+.memorial-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 35px 35px 0;
+}
+
+.memorial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.header-label {
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.hero {
+    text-align: center;
+    padding: 65px 15px 55px;
+}
+
+.portrait-container {
+    width: 220px;
+    height: 260px;
+    margin: 0 auto 35px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 5px solid var(--photo-border);
+    box-shadow: var(--shadow);
+}
+
+.portrait-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.eyebrow,
+.section-kicker {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 6vw, 49px);
+    font-weight: normal;
+    color: var(--heading);
+    margin-bottom: 18px;
+    overflow-wrap: anywhere;
+}
+
+.dates {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    flex-wrap: wrap;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.date-separator {
+    color: var(--accent);
+}
+
+.ornament {
+    color: var(--accent);
+    font-size: 23px;
+    margin: 25px 0;
+}
+
+.hero-phrase {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--muted);
+}
+
+.biography-section,
+.gallery-section {
+    padding: 50px 25px;
+    border-top: 1px solid var(--border);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 29px;
+    font-weight: normal;
+    color: var(--heading);
+}
+
+.heading-line {
+    width: 55px;
+    height: 2px;
+    background: var(--accent);
+    margin: 20px auto 0;
+}
+
+.biography-text {
+    max-width: 690px;
+    margin: auto;
+    font-size: 17px;
+    line-height: 2;
+    color: var(--text);
+    text-align: center;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    cursor: zoom-in;
+    border: 3px solid var(--photo-border);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease;
+}
+
+.gallery-grid img:hover {
+    transform: translateY(-4px);
+}
+
+.closing-section {
+    padding: 60px 25px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.closing-symbol {
+    font-size: 40px;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.closing-section p {
+    max-width: 560px;
+    margin: auto;
+    font-size: 19px;
+    line-height: 1.8;
+    font-style: italic;
+    color: var(--muted);
+}
+
+.memorial-footer {
+    padding: 30px 15px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    font-family: Arial, sans-serif;
+}
+
+.footer-brand {
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.memorial-footer p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.error-message {
+    text-align: center;
+    padding: 100px 20px;
+    font-family: Arial, sans-serif;
+    color: #b91c1c;
+}
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.image-modal[hidden],
+.error-message[hidden] {
+    display: none;
+}
+
+.image-modal img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* =====================================
+   DISEÑO 1: ELEGANTE
+===================================== */
+
+.theme-elegante {
+    --background: #f7f4ed;
+    --surface: #eae2d4;
+    --heading: #44372d;
+    --text: #65574a;
+    --muted: #968574;
+    --accent: #ae8954;
+    --border: #e4dacb;
+    --photo-border: #fffdf8;
+    --shadow: 0 10px 30px rgba(73, 53, 31, 0.12);
+
+    background: var(--background);
+    color: var(--text);
+}
+
+.theme-elegante .hero h1 {
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.theme-elegante .portrait-container {
+    border-radius: 110px 110px 5px 5px;
+}
+
+.theme-elegante .gallery-grid img {
+    border-radius: 3px;
+}
+
+
+/* =====================================
+   DISEÑO 2: CLÁSICO
+===================================== */
+
+.theme-clasico {
+    --background: #172333;
+    --surface: #26384c;
+    --heading: #f0e9dc;
+    --text: #d0d7df;
+    --muted: #aab8c8;
+    --accent: #c5a96d;
+    --border: #35465a;
+    --photo-border: #c5a96d;
+    --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+
+    background: var(--background);
+    color: var(--text);
+}
+
+.theme-clasico .memorial-header {
+    border-bottom: 1px solid var(--accent);
+}
+
+.theme-clasico .portrait-container {
+    border-radius: 5px;
+    border-width: 3px;
+}
+
+.theme-clasico .hero h1 {
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.theme-clasico .gallery-grid img {
+    border-radius: 4px;
+}
+
+.theme-clasico .biography-section,
+.theme-clasico .gallery-section,
+.theme-clasico .closing-section {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+
+/* =====================================
+   DISEÑO 3: MODERNO
+===================================== */
+
+.theme-moderno {
+    --background: #ffffff;
+    --surface: #f0f0f0;
+    --heading: #202124;
+    --text: #555b63;
+    --muted: #858b93;
+    --accent: #527b91;
+    --border: #e7e9ec;
+    --photo-border: #ffffff;
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+.theme-moderno .memorial-container {
+    max-width: 1100px;
+}
+
+.theme-moderno .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+    text-align: left;
+    padding: 80px 20px;
+}
+
+.theme-moderno .portrait-container {
+    flex-shrink: 0;
+    width: 260px;
+    height: 310px;
+    border-radius: 15px;
+    border: none;
+}
+
+.theme-moderno .hero-content {
+    max-width: 500px;
+}
+
+.theme-moderno .hero h1 {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+}
+
+.theme-moderno .dates {
+    justify-content: flex-start;
+}
+
+.theme-moderno .ornament {
+    margin: 20px 0;
+}
+
+.theme-moderno .hero-phrase {
+    font-style: normal;
+    line-height: 1.7;
+}
+
+.theme-moderno .gallery-grid img {
+    border-radius: 12px;
+    border: none;
+}
+
+.theme-moderno .biography-text {
+    font-family: Arial, sans-serif;
+    line-height: 1.9;
+}
+
+.theme-moderno .closing-section {
+    background: #f7f8fa;
+    border-radius: 15px;
+    margin-bottom: 35px;
+}
+
+.theme-moderno .closing-section p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+}
+
+
+/* =====================================
+   DISEÑO RESPONSIVE
+===================================== */
+
+@media (max-width: 650px) {
+
+    .memorial-container {
+        padding: 20px 18px 0;
+    }
+
+    .header-label {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        padding: 45px 5px;
+    }
+
+    .portrait-container {
+        width: 190px;
+        height: 230px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .biography-section,
+    .gallery-section {
+        padding: 40px 5px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .biography-text {
+        font-size: 15px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .gallery-grid img {
+        height: 160px;
+    }
+
+    .theme-moderno .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .theme-moderno .portrait-container {
+        width: 220px;
+        height: 260px;
+    }
+
+    .theme-moderno .hero-content {
+        text-align: center;
+    }
+
+    .theme-moderno .dates {
+        justify-content: center;
+    }
+
+    .theme-moderno .ornament {
+        margin: 15px 0;
+    }
+
+    .closing-section {
+        padding: 40px 15px;
+    }
+}

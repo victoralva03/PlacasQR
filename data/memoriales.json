@@ -1,15 +1,33 @@
+
 [
-  {
-    "id": "memorial-001",
-    "nombre": "María Fernández",
-    "nacimiento": "1945-03-12",
-    "fallecimiento": "2024-08-20",
-    "biografia": "Fue una mujer maravillosa, dedicada a su familia...",
-    "foto": "/images/memoriales/memorial-001/principal.jpg",
-    "galeria": [
-      "/images/memoriales/memorial-001/foto-1.jpg",
-      "/images/memoriales/memorial-001/foto-2.jpg"
-    ],
-    "tema": "elegante"
-  }
+    {
+        "id": "memorial-001",
+        "nombre": "María Fernández",
+        "nacimiento": "1945-03-12",
+        "fallecimiento": "2024-08-20",
+        "biografia": "María fue una mujer dedicada a su familia, llena de alegría y generosidad. Siempre tenía una sonrisa para quienes la rodeaban. Su amor, sus enseñanzas y los momentos compartidos permanecerán para siempre en el corazón de sus seres queridos.",
+        "foto": "/images/memoriales/memorial-001/principal.jpg",
+        "galeria": [],
+        "tema": "elegante"
+    },
+    {
+        "id": "memorial-002",
+        "nombre": "Carlos Ramírez",
+        "nacimiento": "1950-06-15",
+        "fallecimiento": "2023-11-10",
+        "biografia": "Carlos fue un hombre trabajador, fuerte y de grandes valores. Su dedicación a su familia y su espíritu de lucha dejaron una huella imborrable en todas las personas que tuvieron la oportunidad de conocerlo.",
+        "foto": "/images/memoriales/memorial-002/principal.jpg",
+        "galeria": [],
+        "tema": "clasico"
+    },
+    {
+        "id": "memorial-003",
+        "nombre": "José Mendoza",
+        "nacimiento": "1962-09-21",
+        "fallecimiento": "2025-01-05",
+        "biografia": "José disfrutaba de las cosas sencillas de la vida. Su amistad, sus consejos y su manera de enfrentar cada desafío serán recordados con mucho cariño por sus familiares y amigos.",
+        "foto": "/images/memoriales/memorial-003/principal.jpg",
+        "galeria": [],
+        "tema": "moderno"
+    }
 ]

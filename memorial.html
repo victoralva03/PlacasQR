@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memorial | Memorias Perú</title>
+    <meta name="description" content="Un espacio para recordar y honrar una vida.">
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body class="theme-elegante">
+
+    <main class="memorial-container">
+
+        <header class="memorial-header">
+            <div class="brand">MEMORIAS <span>PERÚ</span></div>
+            <div class="header-label">UN RECUERDO QUE PERDURA</div>
+        </header>
+
+        <section class="hero">
+            <div class="portrait-container">
+                <img id="foto-principal"
+                     src=""
+                     alt="Fotografía del homenajeado">
+            </div>
+
+            <div class="hero-content">
+                <span class="eyebrow">EN MEMORIA DE</span>
+
+                <h1 id="nombre">Cargando...</h1>
+
+                <div class="dates">
+                    <span id="nacimiento"></span>
+                    <span class="date-separator">—</span>
+                    <span id="fallecimiento"></span>
+                </div>
+
+                <div class="ornament">✦</div>
+
+                <p class="hero-phrase">
+                    Tu recuerdo vivirá eternamente en nuestros corazones.
+                </p>
+            </div>
+        </section>
+
+        <section class="biography-section">
+            <div class="section-heading">
+                <span class="section-kicker">SU HISTORIA</span>
+                <h2>Una vida para recordar</h2>
+                <div class="heading-line"></div>
+            </div>
+
+            <p id="biografia" class="biography-text"></p>
+        </section>
+
+        <section id="galeria-section" class="gallery-section">
+            <div class="section-heading">
+                <span class="section-kicker">MOMENTOS ESPECIALES</span>
+                <h2>Galería de recuerdos</h2>
+                <div class="heading-line"></div>
+            </div>
+
+            <div id="galeria" class="gallery-grid"></div>
+        </section>
+
+        <section class="closing-section">
+            <div class="closing-symbol">♡</div>
+            <p>
+                Aunque ya no estés físicamente con nosotros,
+                tu historia seguirá viviendo en quienes te amaron.
+            </p>
+        </section>
+
+        <footer class="memorial-footer">
+            <div class="footer-brand">MEMORIAS PERÚ</div>
+            <p>Un homenaje a quienes nunca serán olvidados.</p>
+        </footer>
+
+    </main>
+
+    <div id="error" class="error-message" hidden>
+        No encontramos este memorial.
+    </div>
+
+    <div id="image-modal" class="image-modal" hidden>
+        <button id="close-modal" class="modal-close" aria-label="Cerrar">×</button>
+        <img id="modal-image" src="" alt="Fotografía ampliada">
+    </div>
+
+    <script src="/js/memorial.js"></script>
+
+</body>
+</html>
