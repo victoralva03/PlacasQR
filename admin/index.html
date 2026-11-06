@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de memoriales (local)</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f4ed;
+        color: #44372d;
+        line-height: 1.5;
+        padding: 24px 16px 60px;
+    }
+    main { max-width: 760px; margin: 0 auto; }
+    h1 { font-family: Georgia, serif; font-weight: normal; font-size: 28px; margin-bottom: 6px; }
+    .intro { color: #7a6a5a; font-size: 14px; margin-bottom: 26px; }
+    fieldset {
+        border: 1px solid #e4dacb;
+        background: #fffdf8;
+        border-radius: 6px;
+        padding: 18px 18px 6px;
+        margin-bottom: 18px;
+    }
+    legend { font-family: Georgia, serif; font-size: 17px; padding: 0 8px; }
+    .campo { margin-bottom: 14px; }
+    .fila { display: flex; gap: 14px; flex-wrap: wrap; }
+    .fila .campo { flex: 1; min-width: 180px; }
+    label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; }
+    .ayuda { font-size: 12px; color: #7a6a5a; font-weight: normal; margin-top: 4px; }
+    input[type=text], input[type=date], select, textarea {
+        width: 100%;
+        padding: 10px 11px;
+        font: inherit;
+        font-size: 14px;
+        border: 1px solid #d8ccba;
+        border-radius: 4px;
+        background: #fff;
+        color: #2d2d2d;
+    }
+    textarea { resize: vertical; min-height: 110px; }
+    input[type=color] { width: 54px; height: 38px; padding: 2px; border: 1px solid #d8ccba; border-radius: 4px; background: #fff; }
+    .color-fila { display: flex; align-items: center; gap: 10px; }
+    .color-fila label { margin: 0; font-weight: normal; display: flex; align-items: center; gap: 6px; }
+    .check { display: flex; align-items: center; gap: 8px; font-weight: normal; }
+    .acciones { display: flex; gap: 10px; flex-wrap: wrap; margin: 6px 0 22px; }
+    button, .boton-archivo {
+        padding: 12px 18px;
+        font: inherit;
+        font-size: 14px;
+        border: 1px solid #ae8954;
+        background: #ae8954;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button.secundario, .boton-archivo { background: transparent; color: #8a6a3a; }
+    button:hover, .boton-archivo:hover { filter: brightness(0.93); }
+    #resultado { display: none; }
+    #resultado.visible { display: block; }
+    .caja {
+        background: #fffdf8;
+        border: 1px solid #e4dacb;
+        border-radius: 6px;
+        padding: 16px;
+        margin-bottom: 14px;
+    }
+    .caja h2 { font-family: Georgia, serif; font-weight: normal; font-size: 18px; margin-bottom: 10px; }
+    .url {
+        word-break: break-all;
+        font-family: Consolas, monospace;
+        font-size: 13px;
+        background: #f0ebe0;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 8px 0;
+    }
+    ol { padding-left: 20px; font-size: 14px; }
+    ol li { margin-bottom: 6px; }
+    code { background: #f0ebe0; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+    .error { color: #8f2d2d; font-size: 14px; margin: 0 0 14px; display: none; }
+    .error.visible { display: block; }
+    :focus-visible { outline: 2px solid #ae8954; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+
+    <h1>Panel de memoriales</h1>
+    <p class="intro">
+        Herramienta local: se abre desde tu computadora y no se publica en internet.
+        Llena los datos del cliente, descarga el archivo y súbelo a tu proyecto.
+    </p>
+
+    <form id="formulario" novalidate>
+
+        <fieldset>
+            <legend>Datos de la persona</legend>
+
+            <div class="campo">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" maxlength="100" required>
+            </div>
+
+            <div class="fila">
+                <div class="campo">
+                    <label for="nacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="nacimiento">
+                </div>
+                <div class="campo">
+                    <label for="fallecimiento">Fecha de fallecimiento</label>
+                    <input type="date" id="fallecimiento">
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="biografia">Biografía</label>
+                <textarea id="biografia" maxlength="3000"></textarea>
+                <div class="ayuda">Una línea en blanco separa los párrafos.</div>
+            </div>
+
+            <div class="campo">
+                <label for="frase">Frase principal</label>
+                <input type="text" id="frase" maxlength="160">
+            </div>
+
+            <div class="campo">
+                <label for="dedicatoria">Dedicatoria final</label>
+                <input type="text" id="dedicatoria" maxlength="240">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Diseño</legend>
+
+            <div class="campo">
+                <label for="tema">Tema</label>
+                <select id="tema">
+                    <option value="elegante">Elegante (claro, tonos cálidos)</option>
+                    <option value="clasico">Clásico (azul oscuro y dorado)</option>
+                    <option value="moderno">Moderno (blanco, foto al lado)</option>
+                </select>
+            </div>
+
+            <div class="fila">
+                <div class="campo">
+                    <label>Color de fondo</label>
+                    <div class="color-fila">
+                        <input type="color" id="colorFondo" value="#f7f4ed" aria-label="Color de fondo">
+                        <label><input type="checkbox" id="fondoPropio"> Usar color propio</label>
+                    </div>
+                    <div class="ayuda">Si no lo marcas, se usa el color del tema.</div>
+                </div>
+                <div class="campo">
+                    <label>Color de acento</label>
+                    <div class="color-fila">
+                        <input type="color" id="colorAcento" value="#ae8954" aria-label="Color de acento">
+                        <label><input type="checkbox" id="acentoPropio"> Usar color propio</label>
+                    </div>
+                    <div class="ayuda">Líneas, ornamentos y detalles.</div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Fotografías</legend>
+
+            <div class="campo">
+                <label for="foto">Nombre del archivo de la foto principal</label>
+                <input type="text" id="foto" value="principal.jpg" placeholder="principal.jpg">
+                <div class="ayuda">Déjalo vacío si no hay foto.</div>
+            </div>
+
+            <div class="campo">
+                <label for="galeria">Fotos de la galería (una por línea)</label>
+                <textarea id="galeria" style="min-height:80px" placeholder="foto1.jpg&#10;foto2.jpg"></textarea>
+            </div>
+
+            <div class="campo">
+                <label class="check"><input type="checkbox" id="mostrarGaleria" checked> Mostrar la galería</label>
+            </div>
+        </fieldset>
+
+        <p id="error" class="error" role="alert"></p>
+
+        <div class="acciones">
+            <button type="submit">Generar memorial</button>
+            <label class="boton-archivo" for="cargar">Cargar un memorial existente</label>
+            <input type="file" id="cargar" accept=".json,application/json" hidden>
+            <button type="button" class="secundario" id="limpiar">Empezar de nuevo</button>
+        </div>
+
+    </form>
+
+    <section id="resultado" aria-live="polite">
+
+        <div class="caja">
+            <h2>1. Descarga el archivo</h2>
+            <p>Se llama <code id="nombreArchivo"></code></p>
+            <div class="acciones" style="margin-bottom:0;margin-top:12px">
+                <button type="button" id="descargar">Descargar archivo</button>
+                <button type="button" class="secundario" id="copiarJson">Copiar contenido</button>
+            </div>
+        </div>
+
+        <div class="caja">
+            <h2>2. Enlace para el código QR</h2>
+            <div class="campo" style="margin-bottom:6px">
+                <label for="dominio">Dirección de tu sitio</label>
+                <input type="text" id="dominio" placeholder="https://placasqr.tu-cuenta.workers.dev">
+            </div>
+            <div class="url" id="urlFinal"></div>
+            <button type="button" class="secundario" id="copiarUrl">Copiar enlace</button>
+            <p class="ayuda" style="margin-top:10px">
+                Cuando compres tu dominio, cambia la dirección aquí. Genera los QR
+                recién con el dominio definitivo: el código grabado no se puede cambiar.
+            </p>
+        </div>
+
+        <div class="caja">
+            <h2>3. Súbelo a tu proyecto</h2>
+            <ol>
+                <li>Guarda el archivo en <code>public/data/memoriales/</code></li>
+                <li>Crea la carpeta <code id="carpetaFotos"></code> y pon ahí las fotos, con los mismos nombres que escribiste.</li>
+                <li>Haz commit y push a GitHub. Cloudflare publica los cambios solo.</li>
+                <li>Abre el enlace en tu celular y confirma que se ve bien antes de hacer el QR.</li>
+            </ol>
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+(function () {
+    "use strict";
+
+    var $ = function (id) { return document.getElementById(id); };
+    var ALFABETO = "abcdefghjkmnpqrstuvwxyz23456789"; // sin letras que se confunden (i, l, o, 0, 1)
+    var idActual = null;
+    var jsonActual = "";
+
+    var COLORES_TEMA = {
+        elegante: { fondo: "#f7f4ed", acento: "#ae8954" },
+        clasico:  { fondo: "#172333", acento: "#c5a96d" },
+        moderno:  { fondo: "#ffffff", acento: "#527b91" }
+    };
+
+    function quitarTildes(texto) {
+        return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function aSlug(texto) {
+        return quitarTildes(texto)
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 40) || "memorial";
+    }
+
+    function sufijoAleatorio(largo) {
+        var bytes = new Uint8Array(largo);
+        crypto.getRandomValues(bytes);
+        var s = "";
+        for (var i = 0; i < largo; i++) s += ALFABETO[bytes[i] % ALFABETO.length];
+        return s;
+    }
+
+    function generarId(nombre) {
+        return aSlug(nombre) + "-" + sufijoAleatorio(6);
+    }
+
+    function mostrarError(msg) {
+        var e = $("error");
+        e.textContent = msg || "";
+        e.classList.toggle("visible", !!msg);
+    }
+
+    function leerFormulario() {
+        var galeria = $("galeria").value
+            .split("\n")
+            .map(function (l) { return l.trim(); })
+            .filter(Boolean);
+
+        return {
+            nombre: $("nombre").value.trim(),
+            nacimiento: $("nacimiento").value,
+            fallecimiento: $("fallecimiento").value,
+            biografia: $("biografia").value.trim(),
+            foto: $("foto").value.trim(),
+            galeria: galeria,
+            tema: $("tema").value,
+            colorFondo: $("fondoPropio").checked ? $("colorFondo").value : "",
+            colorAcento: $("acentoPropio").checked ? $("colorAcento").value : "",
+            frase: $("frase").value.trim(),
+            dedicatoria: $("dedicatoria").value.trim(),
+            mostrarGaleria: $("mostrarGaleria").checked
+        };
+    }
+
+    function validar(d) {
+        if (!d.nombre) return "Escribe el nombre de la persona.";
+        if (!d.biografia) return "Escribe la biografía.";
+        if (d.nacimiento && d.fallecimiento && d.nacimiento > d.fallecimiento) {
+            return "La fecha de nacimiento no puede ser posterior a la de fallecimiento.";
+        }
+        var nombres = [d.foto].concat(d.galeria).filter(Boolean);
+        for (var i = 0; i < nombres.length; i++) {
+            var n = nombres[i];
+            if (/^https:\/\//i.test(n)) continue;
+            if (/[\/\\]/.test(n) || n.indexOf("..") !== -1) {
+                return "El nombre de foto \"" + n + "\" no es válido. Usa solo el nombre del archivo, sin carpetas.";
+            }
+        }
+        return "";
+    }
+
+    function actualizarUrl() {
+        if (!idActual) return;
+        var dominio = $("dominio").value.trim().replace(/\/+$/, "");
+        $("urlFinal").textContent = (dominio || "https://TU-DOMINIO") + "/memorial.html?id=" + idActual;
+        try { localStorage.setItem("placasqr_dominio", dominio); } catch (e) {}
+    }
+
+    $("formulario").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var datos = leerFormulario();
+        var problema = validar(datos);
+        mostrarError(problema);
+        if (problema) return;
+
+        if (!idActual) idActual = generarId(datos.nombre);
+
+        var salida = Object.assign({ id: idActual }, datos);
+        jsonActual = JSON.stringify(salida, null, 2) + "\n";
+
+        $("nombreArchivo").textContent = idActual + ".json";
+        $("carpetaFotos").textContent = "public/images/memoriales/" + idActual + "/";
+        actualizarUrl();
+
+        $("resultado").classList.add("visible");
+        $("resultado").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    $("descargar").addEventListener("click", function () {
+        var blob = new Blob([jsonActual], { type: "application/json" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = idActual + ".json";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    });
+
+    function copiar(texto, boton) {
+        var original = boton.textContent;
+        function listo() {
+            boton.textContent = "Copiado";
+            setTimeout(function () { boton.textContent = original; }, 1500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(texto).then(listo, function () {
+                boton.textContent = "No se pudo copiar";
+            });
+        } else {
+            boton.textContent = "No se pudo copiar";
+        }
+    }
+
+    $("copiarJson").addEventListener("click", function () { copiar(jsonActual, this); });
+    $("copiarUrl").addEventListener("click", function () { copiar($("urlFinal").textContent, this); });
+    $("dominio").addEventListener("input", actualizarUrl);
+
+    // Al elegir un tema, los selectores de color muestran los colores de ese tema
+    $("tema").addEventListener("change", function () {
+        var base = COLORES_TEMA[this.value];
+        if (!$("fondoPropio").checked) $("colorFondo").value = base.fondo;
+        if (!$("acentoPropio").checked) $("colorAcento").value = base.acento;
+    });
+    $("colorFondo").addEventListener("input", function () { $("fondoPropio").checked = true; });
+    $("colorAcento").addEventListener("input", function () { $("acentoPropio").checked = true; });
+
+    function cargarEnFormulario(d) {
+        $("nombre").value = d.nombre || "";
+        $("nacimiento").value = d.nacimiento || "";
+        $("fallecimiento").value = d.fallecimiento || "";
+        $("biografia").value = d.biografia || "";
+        $("frase").value = d.frase || "";
+        $("dedicatoria").value = d.dedicatoria || "";
+        $("foto").value = d.foto || "";
+        $("galeria").value = Array.isArray(d.galeria) ? d.galeria.join("\n") : "";
+        $("mostrarGaleria").checked = d.mostrarGaleria !== false;
+
+        var tema = COLORES_TEMA[d.tema] ? d.tema : "elegante";
+        $("tema").value = tema;
+
+        var tieneFondo = /^#[0-9a-f]{6}$/i.test(d.colorFondo || "");
+        var tieneAcento = /^#[0-9a-f]{6}$/i.test(d.colorAcento || "");
+        $("fondoPropio").checked = tieneFondo;
+        $("acentoPropio").checked = tieneAcento;
+        $("colorFondo").value = tieneFondo ? d.colorFondo : COLORES_TEMA[tema].fondo;
+        $("colorAcento").value = tieneAcento ? d.colorAcento : COLORES_TEMA[tema].acento;
+    }
+
+    $("cargar").addEventListener("change", function () {
+        var archivo = this.files[0];
+        if (!archivo) return;
+
+        var lector = new FileReader();
+        lector.onload = function () {
+            try {
+                var d = JSON.parse(lector.result);
+                if (typeof d.id !== "string" || !/^[a-z0-9][a-z0-9-]{2,63}$/.test(d.id)) {
+                    throw new Error("El archivo no tiene un id válido.");
+                }
+                idActual = d.id; // se conserva el mismo código para no romper el QR ya impreso
+                cargarEnFormulario(d);
+                mostrarError("");
+                $("resultado").classList.remove("visible");
+            } catch (err) {
+                mostrarError("No se pudo leer ese archivo: " + err.message);
+            }
+        };
+        lector.readAsText(archivo);
+        this.value = "";
+    });
+
+    $("limpiar").addEventListener("click", function () {
+        $("formulario").reset();
+        idActual = null;
+        jsonActual = "";
+        mostrarError("");
+        $("resultado").classList.remove("visible");
+    });
+
+    try {
+        $("dominio").value = localStorage.getItem("placasqr_dominio") || "";
+    } catch (e) {}
+})();
+</script>
+</body>
+</html>

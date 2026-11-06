@@ -2,7 +2,8 @@
   "name": "placasqr",
   "compatibility_date": "2026-08-25",
   "assets": {
-    "directory": "./",
+    // Solo se publica la carpeta public. El resto (admin, README...) queda privado.
+    "directory": "./public",
     "not_found_handling": "404-page"
   }
 }

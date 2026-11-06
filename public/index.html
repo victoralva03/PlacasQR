@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorias Perú | Un recuerdo que perdura</title>
+    <meta name="description" content="Placas con código QR para lápidas y memoriales. Cada placa abre una página con la historia y las fotos de quien se recuerda.">
+    <meta property="og:title" content="Memorias Perú">
+    <meta property="og:description" content="Placas con código QR para lápidas y memoriales.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="theme-elegante">
+
+    <main class="landing">
+
+        <div class="brand">MEMORIAS <span>PERÚ</span></div>
+
+        <h1>Un recuerdo que perdura</h1>
+
+        <p class="landing-text">
+            Cada placa lleva un código QR. Al escanearlo con el celular se abre
+            una página con la historia, las fotos y las palabras de la familia.
+        </p>
+
+        <div class="ornament" aria-hidden="true">✦</div>
+
+        <form id="form-codigo" class="landing-form" novalidate>
+            <label for="codigo">¿Tienes el código de un memorial?</label>
+            <div class="landing-row">
+                <input id="codigo" name="codigo" type="text" autocomplete="off"
+                       autocapitalize="none" spellcheck="false"
+                       placeholder="ej. maria-fernandez-4kq8z2">
+                <button type="submit">Abrir memorial</button>
+            </div>
+            <p id="codigo-error" class="landing-error" hidden>Escribe el código tal como aparece en la placa.</p>
+        </form>
+
+    </main>
+
+    <script>
+        document.getElementById("form-codigo").addEventListener("submit", function (e) {
+            e.preventDefault();
+            var valor = document.getElementById("codigo").value.trim().toLowerCase();
+            var error = document.getElementById("codigo-error");
+            if (!/^[a-z0-9][a-z0-9-]{2,63}$/.test(valor)) {
+                error.hidden = false;
+                return;
+            }
+            error.hidden = true;
+            window.location.href = "/memorial.html?id=" + encodeURIComponent(valor);
+        });
+    </script>
+</body>
+</html>

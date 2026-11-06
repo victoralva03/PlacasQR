@@ -1,19 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
 
     <title>Memorial | Memorias Perú</title>
     <meta name="description" content="Un espacio para recordar y honrar una vida.">
+    <meta property="og:title" content="Memorial | Memorias Perú">
+    <meta property="og:description" content="Un espacio para recordar y honrar una vida.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body class="theme-elegante">
+<body>
 
-    <main class="memorial-container">
+    <div id="cargando" class="status-message" role="status">Cargando memorial…</div>
+
+    <main class="memorial-container" hidden>
 
         <header class="memorial-header">
             <div class="brand">MEMORIAS <span>PERÚ</span></div>
@@ -21,16 +27,14 @@
         </header>
 
         <section class="hero">
-            <div class="portrait-container">
-                <img id="foto-principal"
-                     src=""
-                     alt="Fotografía del homenajeado">
+            <div class="portrait-container" id="portrait" hidden>
+                <img id="foto-principal" src="" alt="Fotografía del homenajeado">
             </div>
 
             <div class="hero-content">
                 <span class="eyebrow">EN MEMORIA DE</span>
 
-                <h1 id="nombre">Cargando...</h1>
+                <h1 id="nombre"></h1>
 
                 <div class="dates">
                     <span id="nacimiento"></span>
@@ -38,7 +42,7 @@
                     <span id="fallecimiento"></span>
                 </div>
 
-                <div class="ornament">✦</div>
+                <div class="ornament" aria-hidden="true">✦</div>
 
                 <p id="frase" class="hero-phrase"></p>
             </div>
@@ -54,7 +58,7 @@
             <p id="biografia" class="biography-text"></p>
         </section>
 
-        <section id="galeria-section" class="gallery-section">
+        <section id="galeria-section" class="gallery-section" hidden>
             <div class="section-heading">
                 <span class="section-kicker">MOMENTOS ESPECIALES</span>
                 <h2>Galería de recuerdos</h2>
@@ -65,7 +69,7 @@
         </section>
 
         <section class="closing-section">
-            <div class="closing-symbol">♡</div>
+            <div class="closing-symbol" aria-hidden="true">♡</div>
             <p id="dedicatoria"></p>
         </section>
 
@@ -76,11 +80,13 @@
 
     </main>
 
-    <div id="error" class="error-message" hidden>
-        No encontramos este memorial.
+    <div id="error" class="status-message error-message" hidden>
+        <p>No encontramos este memorial.</p>
+        <p class="status-hint">Revisa que el código QR esté completo y vuelve a escanearlo.</p>
+        <a class="status-link" href="/">Ir al inicio</a>
     </div>
 
-    <div id="image-modal" class="image-modal" hidden>
+    <div id="image-modal" class="image-modal" hidden role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
         <button id="close-modal" class="modal-close" aria-label="Cerrar">×</button>
         <img id="modal-image" src="" alt="Fotografía ampliada">
     </div>
