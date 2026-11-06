@@ -37,6 +37,13 @@
         "--shadow": "0 10px 35px rgba(0, 0, 0, 0.35)"
     };
 
+    const VARIABLES_PERSONALIZADAS = [
+        "--background", "--accent",
+        ...Object.keys(TEXTO_SOBRE_CLARO)
+    ];
+
+    const MODO_VISTA_PREVIA = PARAMETROS.get("preview") === "1";
+
     const $ = (id) => document.getElementById(id);
 
     let elementoConFoco = null;
@@ -126,6 +133,9 @@
         const base = TEMAS[tema];
 
         document.body.className = `theme-${tema}`;
+
+        // Limpia colores de una aplicación anterior (necesario en la vista previa)
+        VARIABLES_PERSONALIZADAS.forEach((v) => document.body.style.removeProperty(v));
 
         const tieneFondoPropio = colorValido(persona.colorFondo);
         const fondo = tieneFondoPropio ? persona.colorFondo.trim() : base.fondo;
@@ -263,5 +273,33 @@
     });
 
 
-    cargarMemorial();
+    /* ---------- Vista previa (la usa el panel local) ---------- */
+
+    // Con ?preview=1 la página no busca ningún archivo: espera los datos
+    // que le envía el panel y los dibuja. Solo muestra texto y fotos ya validados.
+    function iniciarVistaPrevia() {
+        $("cargando").textContent = "Esperando datos del panel…";
+
+        window.addEventListener("message", (e) => {
+            const msg = e.data;
+            if (!msg || msg.tipo !== "memorial-preview") return;
+            if (!msg.memorial || typeof msg.memorial !== "object") return;
+
+            const id = ID_VALIDO.test(String(msg.memorial.id || ""))
+                ? msg.memorial.id
+                : "vista-previa";
+
+            mostrarMemorial(msg.memorial, id);
+        });
+
+        if (window.parent !== window) {
+            window.parent.postMessage({ tipo: "preview-listo" }, "*");
+        }
+    }
+
+    if (MODO_VISTA_PREVIA) {
+        iniciarVistaPrevia();
+    } else {
+        cargarMemorial();
+    }
 })();

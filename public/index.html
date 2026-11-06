@@ -37,9 +37,24 @@
             <p id="codigo-error" class="landing-error" hidden>Escribe el código tal como aparece en la placa.</p>
         </form>
 
+        <p id="contacto" class="landing-contact" hidden>
+            ¿Quieres una placa para un ser querido?
+            <a id="enlace-whatsapp" href="#" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        </p>
+
     </main>
 
     <script>
+        // Tu número con código de país y sin espacios ni signos. Ejemplo para Perú: "51987654321"
+        // Si lo dejas vacío, el botón de contacto no se muestra.
+        var WHATSAPP = "";
+
+        if (/^[0-9]{8,15}$/.test(WHATSAPP)) {
+            document.getElementById("enlace-whatsapp").href =
+                "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Hola, quiero información sobre las placas QR.");
+            document.getElementById("contacto").hidden = false;
+        }
+
         document.getElementById("form-codigo").addEventListener("submit", function (e) {
             e.preventDefault();
             var valor = document.getElementById("codigo").value.trim().toLowerCase();

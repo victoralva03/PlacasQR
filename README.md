@@ -33,6 +33,23 @@ El código (por ejemplo `maria-fernandez-4kq8z2`) lleva letras al azar a propós
 así nadie puede adivinar los memoriales de otras familias. No lo cambies una vez
 que el QR esté grabado.
 
+## Vista previa en el panel
+
+El panel muestra un celular a la derecha que se actualiza mientras escribes, para
+elegir tema y colores con el cliente al lado. Para que funcione:
+
+1. Deja el sitio corriendo en VS Code (Live Server o `npx wrangler dev`).
+2. En el panel, en "Sitio abierto en tu computadora", escribe esa dirección
+   (normalmente http://127.0.0.1:5500).
+
+Las fotos aparecen en la vista previa cuando ya están copiadas en
+`public/images/memoriales/<codigo>/`.
+
+## Botón de WhatsApp (opcional)
+
+En `public/index.html`, busca `var WHATSAPP = "";` y escribe tu número con código
+de país, sin espacios ni signos (Perú: `51987654321`). Si queda vacío, no se muestra.
+
 ## Probar en tu computadora
 
 Necesitas servir la carpeta `public` (no abrir los archivos con doble clic):
@@ -41,7 +58,8 @@ Necesitas servir la carpeta `public` (no abrir los archivos con doble clic):
 npx wrangler dev
 ```
 
-o con la extensión Live Server de VS Code, haciendo clic derecho sobre
+o con la extensión Live Server de VS Code (ya viene configurada en
+`.vscode/settings.json` para servir la carpeta `public`): clic derecho sobre
 `public/index.html` > Open with Live Server.
 
 Enlaces de prueba:
@@ -62,6 +80,16 @@ Enlaces de prueba:
 | mostrarGaleria | true o false |
 | tema | elegante, clasico o moderno |
 | colorFondo, colorAcento | Vacío = color del tema. El texto se ajusta solo al fondo. |
+
+## Lista de pruebas antes de vender una placa
+
+- El QR se lee con al menos 3 celulares distintos (Android y iPhone).
+- Se lee con sol directo, a la sombra y de noche con la luz del celular.
+- Se lee a unos 30 cm y a unos 60 cm.
+- Se lee con la placa mojada y con un poco de polvo o tierra.
+- Se lee con la cámara normal, sin una app especial.
+- El enlace del QR abre el memorial correcto y se ve bien en el celular.
+- Cuando la foto no carga, la página sigue viéndose bien.
 
 ## Antes de vender (pendiente)
 

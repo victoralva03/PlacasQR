@@ -595,6 +595,22 @@ body {
     display: none;
 }
 
+.landing-contact {
+    margin-top: 44px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.landing-contact[hidden] {
+    display: none;
+}
+
+.landing-contact a {
+    color: var(--accent);
+    margin-left: 4px;
+}
+
 @media (max-width: 480px) {
     .landing-row {
         flex-direction: column;
