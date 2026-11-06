@@ -1,33 +1,48 @@
 
 [
-    {
-        "id": "memorial-001",
-        "nombre": "María Fernández",
-        "nacimiento": "1945-03-12",
-        "fallecimiento": "2024-08-20",
-        "biografia": "María fue una mujer dedicada a su familia, llena de alegría y generosidad. Siempre tenía una sonrisa para quienes la rodeaban. Su amor, sus enseñanzas y los momentos compartidos permanecerán para siempre en el corazón de sus seres queridos.",
-        "foto": "/images/memoriales/memorial-001/principal.jpg",
-        "galeria": [],
-        "tema": "elegante"
-    },
-    {
-        "id": "memorial-002",
-        "nombre": "Carlos Ramírez",
-        "nacimiento": "1950-06-15",
-        "fallecimiento": "2023-11-10",
-        "biografia": "Carlos fue un hombre trabajador, fuerte y de grandes valores. Su dedicación a su familia y su espíritu de lucha dejaron una huella imborrable en todas las personas que tuvieron la oportunidad de conocerlo.",
-        "foto": "/images/memoriales/memorial-002/principal.jpg",
-        "galeria": [],
-        "tema": "clasico"
-    },
-    {
-        "id": "memorial-003",
-        "nombre": "José Mendoza",
-        "nacimiento": "1962-09-21",
-        "fallecimiento": "2025-01-05",
-        "biografia": "José disfrutaba de las cosas sencillas de la vida. Su amistad, sus consejos y su manera de enfrentar cada desafío serán recordados con mucho cariño por sus familiares y amigos.",
-        "foto": "/images/memoriales/memorial-003/principal.jpg",
-        "galeria": [],
-        "tema": "moderno"
-    }
+  {
+    "id": "memorial-001",
+    "nombre": "María Fernández",
+    "nacimiento": "1945-03-12",
+    "fallecimiento": "2024-08-20",
+    "biografia": "María fue una mujer dedicada a su familia, llena de alegría y generosidad. Siempre tenía una sonrisa para quienes la rodeaban.",
+    "foto": "/images/memoriales/memorial-001/principal.jpg",
+    "galeria": [],
+    "tema": "elegante",
+    "colorFondo": "#f7f4ed",
+    "colorAcento": "#ae8954",
+    "frase": "El amor verdadero nunca desaparece.",
+    "dedicatoria": "Tus hijos y nietos te recordarán por siempre.",
+    "mostrarGaleria": true
+  },
+  {
+    "id": "memorial-002",
+    "nombre": "Carlos Ramírez",
+    "nacimiento": "1950-06-15",
+    "fallecimiento": "2023-11-10",
+    "biografia": "Carlos fue un hombre trabajador, fuerte y de grandes valores. Su dedicación a su familia dejó una huella imborrable.",
+    "foto": "/images/memoriales/memorial-002/principal.jpg",
+    "galeria": [],
+    "tema": "clasico",
+    "colorFondo": "#172333",
+    "colorAcento": "#c5a96d",
+    "frase": "Un padre ejemplar, un recuerdo eterno.",
+    "dedicatoria": "Con amor, tu familia.",
+    "mostrarGaleria": false
+  },
+  {
+    "id": "memorial-003",
+    "nombre": "José Mendoza",
+    "nacimiento": "1962-09-21",
+    "fallecimiento": "2025-01-05",
+    "biografia": "José disfrutaba de las cosas sencillas de la vida. Su amistad y sus consejos serán recordados con mucho cariño.",
+    "foto": "/images/memoriales/memorial-003/principal.jpg",
+    "galeria": [],
+    "tema": "moderno",
+    "colorFondo": "#ffffff",
+    "colorAcento": "#527b91",
+    "frase": "Siempre vivirás en nuestros recuerdos.",
+    "dedicatoria": "Con cariño de todos los que te amamos.",
+    "mostrarGaleria": true
+  }
 ]

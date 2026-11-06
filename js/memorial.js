@@ -79,6 +79,52 @@ function mostrarMemorial(persona) {
 
     document.body.className = `theme-${tema}`;
 
+    // Personalización de colores
+const validarColor = (color, predeterminado) => {
+    return typeof color === "string" &&
+        /^#[0-9A-Fa-f]{6}$/.test(color)
+        ? color
+        : predeterminado;
+};
+
+const colores = {
+    elegante: {
+        fondo: "#f7f4ed",
+        acento: "#ae8954"
+    },
+    clasico: {
+        fondo: "#172333",
+        acento: "#c5a96d"
+    },
+    moderno: {
+        fondo: "#ffffff",
+        acento: "#527b91"
+    }
+};
+
+const base = colores[tema];
+
+document.body.style.setProperty(
+    "--background",
+    validarColor(persona.colorFondo, base.fondo)
+);
+
+document.body.style.setProperty(
+    "--accent",
+    validarColor(persona.colorAcento, base.acento)
+);
+
+// Frases personalizadas
+document.getElementById("frase").textContent =
+    persona.frase || "Tu recuerdo vivirá eternamente en nuestros corazones.";
+
+document.getElementById("dedicatoria").textContent =
+    persona.dedicatoria ||
+    "Aunque ya no estés físicamente con nosotros, tu historia seguirá viviendo en quienes te amaron.";
+
+// Mostrar u ocultar galería
+const mostrarGaleria = persona.mostrarGaleria !== false;
+
     // Información principal
     document.title = `${persona.nombre} | Memorias Perú`;
 
@@ -112,7 +158,7 @@ function mostrarMemorial(persona) {
         ? persona.galeria
         : [];
 
-    if (fotografias.length === 0) {
+   if (!mostrarGaleria || fotografias.length === 0) {
         seccionGaleria.hidden = true;
     } else {
 
