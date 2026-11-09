@@ -1,0 +1,17 @@
+{
+  "id": "victor-alva-vu6jfs",
+  "nombre": "victor alva",
+  "nacimiento": "2003-03-19",
+  "fallecimiento": "2076-08-20",
+  "biografia": "UNA PERSONA TRABAJADORAUNA PERSONA TRABAJADORAUNA PERSONA TRABAJADORAUNA PERSONA TRABAJADORAUNA PERSONA TRABAJADORA",
+  "foto": "images.jpg",
+  "galeria": [
+    "alianza.jpg"
+  ],
+  "tema": "elegante",
+  "colorFondo": "#0c2b69",
+  "colorAcento": "#fafafa",
+  "frase": "ALIANZA LIMA",
+  "dedicatoria": "DE PARTE DE TUS HIJOS",
+  "mostrarGaleria": true
+}
